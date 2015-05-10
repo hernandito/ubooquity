@@ -30,7 +30,7 @@ RUN apt-mark hold initscripts udev plymouth mountall;\
     apt-get -y upgrade && apt-get clean
 
 # Install dependencies
-RUN apt-get install -qy --force-yes openjdk-7-jre-headless wget python-pip unzip python-tornado python-zmq python-psutil \
+RUN apt-get install -qy --force-yes openjdk-7-jre-headless mc wget python-pip unzip python-tornado python-zmq python-psutil \
     && apt-get clean
 
 # Install and Configure Circus
@@ -41,7 +41,7 @@ RUN mkdir /etc/circus.d /etc/setup.d
 
 # Install Ubooquity
 RUN wget http://vaemendis.net/ubooquity/downloads/Ubooquity-1.7.6.zip && unzip Ubooquity-1.7.6.zip -d UbooquityInstall
-
+RUN wget http://vaemendis.net/ubooquity/downloads/themes/modern-1.7.0.zip
 # Exposed config volume
 VOLUME /config
 
