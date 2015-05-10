@@ -1,15 +1,16 @@
 #Ubooquity
 FROM ubuntu:trusty
-MAINTAINER Carlos Hernandez <carlos@techbyte.ca>
+MAINTAINER Hernando
 
 # Let the container know that there is no tty
 ENV DEBIAN_FRONTEND noninteractive
 
 # Set locale to UTF-8
-ENV LANGUAGE en_US.UTF-8
+ENV HOME /root
+ENV LC_ALL C.UTF-8
 ENV LANG en_US.UTF-8
-RUN locale-gen en_US en_US.UTF-8
-RUN update-locale LANG=en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+ENV TERM xterm
 RUN dpkg-reconfigure locales
 
 # Set user nobody to uid and gid of unRAID, uncomment for unRAID
@@ -39,7 +40,7 @@ RUN pip --no-input install circus;\
 RUN mkdir /etc/circus.d /etc/setup.d
 
 # Install Ubooquity
-RUN wget http://vaemendis.net/ubooquity/downloads/Ubooquity-1.6.0.zip && unzip Ubooquity-1.6.0.zip -d UbooquityInstall
+RUN wget http://vaemendis.net/ubooquity/downloads/Ubooquity-1.7.6.zip && unzip Ubooquity-1.7.6.zip -d UbooquityInstall
 
 # Exposed config volume
 VOLUME /config
